@@ -1,9 +1,12 @@
 import React from 'react';
+import SignUpForm from './SignUpForm'
 
 class SignUp extends React.Component {
 	render() {
 		return(
-			<div>SignUp Page</div>
+			<div className="row">
+				<SignUpForm />
+			</div>			
 		)
 	}
 }
