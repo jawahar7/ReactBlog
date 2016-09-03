@@ -16,10 +16,11 @@ class SignUpForm extends React.Component {
 	onHandleSubmit(e) {
 		e.preventDefault();
 		console.log(this.state);
+		this.props.userSignUpRequest(this.state);
 	}
 
 	onHandleChange(e) {
-		this.setState({ [e.target.name]: e.target.value })
+		this.setState({ [e.target.name]: e.target.value });		
 	}
 
 	render() {
@@ -54,6 +55,10 @@ class SignUpForm extends React.Component {
 			</div>
 		);
 	}
+}
+
+SignUpForm.propTypes = {
+	userSignUpRequest: React.PropTypes.func.isRequired
 }
 
 export default SignUpForm;
