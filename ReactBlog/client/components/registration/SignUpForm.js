@@ -14,8 +14,20 @@ class SignUpForm extends React.Component {
 	}
 
 	onHandleSubmit(e) {
-		e.preventDefault();
-		console.log(this.state);
+		e.preventDefault();				
+		/*this.props.userSignUpRequest(this.state).then(function(data){
+			console.log(data)
+			this.props.addAlertMessage('hai');
+		}).catch(function(err){
+			console.log(err)
+		})	*/	
+		/*this.props.userSignUpRequest(this.state).then(
+			( {data} ) => {
+				console.log(data)
+				this.props.addAlertMessage(data.result)
+			},
+			( {err} ) => console.log(err)			
+		);*/
 		this.props.userSignUpRequest(this.state);
 	}
 
@@ -58,7 +70,8 @@ class SignUpForm extends React.Component {
 }
 
 SignUpForm.propTypes = {
-	userSignUpRequest: React.PropTypes.func.isRequired
+	userSignUpRequest: React.PropTypes.func.isRequired,
+	addAlertMessage: React.PropTypes.func.isRequired
 }
 
 export default SignUpForm;
