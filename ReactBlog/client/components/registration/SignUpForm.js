@@ -14,21 +14,13 @@ class SignUpForm extends React.Component {
 	}
 
 	onHandleSubmit(e) {
-		e.preventDefault();				
-		/*this.props.userSignUpRequest(this.state).then(function(data){
+		e.preventDefault();		
+		this.props.userSignUpRequest(this.state).then(({data}) => {
 			console.log(data)
-			this.props.addAlertMessage('hai');
-		}).catch(function(err){
-			console.log(err)
-		})	*/	
-		/*this.props.userSignUpRequest(this.state).then(
-			( {data} ) => {
-				console.log(data)
-				this.props.addAlertMessage(data.result)
-			},
-			( {err} ) => console.log(err)			
-		);*/
-		this.props.userSignUpRequest(this.state);
+			this.props.addAlertMessage(data.result)
+		}).catch(error => {
+			console.log(error.response.data)			
+		})﻿
 	}
 
 	onHandleChange(e) {

@@ -19,8 +19,8 @@ usercontroller.save = function(req, res) {
 			}
 		});
 	});*/
-	//res.json({result: 'success'});
-	res.status(400).json({ error: 'something is wrong' });
+	res.json({result: 'success'});
+	//res.status(400).json({ error: 'something is wrong' });
 };
 
 usercontroller.login = function(req, res){		
