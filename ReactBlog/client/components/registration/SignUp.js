@@ -7,10 +7,10 @@ import AlertBar from '../AlertBar';
 
 class SignUp extends React.Component {
 	render() {		
-		const { userSignUpRequest, addAlertMessage } = this.props;
+		const { userSignUpRequest, addAlertMessage } = this.props;		
 		return(
-			<div className="row">
-				<AlertBar />
+			<div className="row">	
+				<AlertBar />		
 				<SignUpForm userSignUpRequest={userSignUpRequest} addAlertMessage={addAlertMessage} />
 			</div>			
 		)

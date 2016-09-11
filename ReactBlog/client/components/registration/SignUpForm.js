@@ -17,7 +17,7 @@ class SignUpForm extends React.Component {
 		e.preventDefault();		
 		this.props.userSignUpRequest(this.state).then(({data}) => {
 			console.log(data)
-			this.props.addAlertMessage(data.result)
+			this.props.addAlertMessage(data.result, "success")
 		}).catch(error => {
 			console.log(error.response.data)			
 		})﻿

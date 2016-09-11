@@ -19,7 +19,7 @@ usercontroller.save = function(req, res) {
 			}
 		});
 	});*/
-	res.json({result: 'success'});
+	res.json({result: 'Insert Successfully'});
 	//res.status(400).json({ error: 'something is wrong' });
 };
 

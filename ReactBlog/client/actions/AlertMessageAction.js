@@ -1,7 +1,15 @@
-export function addAlertMessage(message) {
-	console.log(message)
+export function addAlertMessage(message, result) {	
 	return {
 		type: 'ADD_ALERT',
-		message
+		message,
+		result
+	}
+}
+
+export function closeAlertMessage(id) {
+	console.log(id)
+	return {
+		type: 'CLOSE_ALERT',
+		id
 	}
 }
