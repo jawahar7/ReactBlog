@@ -15,11 +15,18 @@ class SignUpForm extends React.Component {
 
 	onHandleSubmit(e) {
 		e.preventDefault();		
-		this.props.userSignUpRequest(this.state).then(({data}) => {
-			console.log(data)
-			this.props.addAlertMessage(data.result, "success")
+		this.props.userSignUpRequest(this.state).then(({data}) => {			
+			this.props.addAlertMessage(data.result, "success");
+			this.setState({
+				username: '',
+				email: '',
+				password: '',
+				confirmpassword: ''
+			});
 		}).catch(error => {
-			console.log(error.response.data)			
+			console.log(error.response.data)	
+			this.props.closeAllAlert();
+			this.props.addAlertMessage(error.response.data.error.errmsg, "danger")		
 		})﻿
 	}
 
@@ -63,7 +70,8 @@ class SignUpForm extends React.Component {
 
 SignUpForm.propTypes = {
 	userSignUpRequest: React.PropTypes.func.isRequired,
-	addAlertMessage: React.PropTypes.func.isRequired
+	addAlertMessage: React.PropTypes.func.isRequired,
+	closeAllAlert: React.PropTypes.func.isRequired
 }
 
 export default SignUpForm;

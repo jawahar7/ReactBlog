@@ -6,10 +6,15 @@ export function addAlertMessage(message, result) {
 	}
 }
 
-export function closeAlertMessage(id) {
-	console.log(id)
+export function closeAlertMessage(id) {	
 	return {
-		type: 'CLOSE_ALERT',
+		type: 'CLOSE_ALERT_BY_ID',
 		id
+	}
+}
+
+export function closeAllAlert() {
+	return {
+		type: 'CLOSE_ALERT'
 	}
 }

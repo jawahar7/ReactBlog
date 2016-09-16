@@ -1,13 +1,14 @@
 import randomstring from 'randomstring';
 import findIndex from 'lodash/findIndex'
 
-export default (state = [], action) => {
-	console.log(state)
+export default (state = [], action) => {	
 	switch (action.type) {
 		case 'ADD_ALERT':
 			return addAlert(state, action)
-		case 'CLOSE_ALERT':
+		case 'CLOSE_ALERT_BY_ID':
 			return closeAlert(state, action)
+		case 'CLOSE_ALERT':
+			return [];
 		default:
 			return state
 	}

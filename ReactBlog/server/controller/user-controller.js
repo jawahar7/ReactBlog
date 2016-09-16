@@ -4,7 +4,7 @@ var usercontroller = {};
 const saltRounds = 10;
 
 usercontroller.save = function(req, res) {	
-	/*bcrypt.genSalt(saltRounds, function(err, salt) {
+	bcrypt.genSalt(saltRounds, function(err, salt) {
     	bcrypt.hash(req.body.password, salt, function(err, hash) {	
 			if(err)
 				res.send(err);
@@ -12,15 +12,13 @@ usercontroller.save = function(req, res) {
 				var user = new users({username: req.body.username, password: hash, email: req.body.email});			
 				user.save(function(err, data){
 					if(err)
-						res.json({result: 'failed', error:err});
+						res.status(400).json({result: 'failed', error: err});
 					else
 						res.json({result: 'success'});
 				});
 			}
 		});
-	});*/
-	res.json({result: 'Insert Successfully'});
-	//res.status(400).json({ error: 'something is wrong' });
+	});	
 };
 
 usercontroller.login = function(req, res){		

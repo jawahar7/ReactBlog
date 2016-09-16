@@ -2,6 +2,8 @@ import express from 'express';
 import bodyParser from 'body-parser';
 import cookieParser from 'cookie-parser';
 import mongoose from 'mongoose';
+import passport from 'passport';
+import session from 'express-session';
 
 import webpack from 'webpack';
 import webpackMiddleware from 'webpack-dev-middleware';
@@ -12,6 +14,9 @@ let app = express();
 app.use(bodyParser.urlencoded({extended: true}));
 app.use(bodyParser.json());
 app.use(cookieParser());
+app.use(session({secret:"this is the secret", resave: true, saveUninitialized: true, cookie: { maxAge: 15*60*1000 }}));
+app.use(passport.initialize());
+app.use(passport.session());
 const compiler = webpack(webpackConfig);
 app.use(webpackMiddleware(compiler));
 app.use(webpackHotMiddleware(compiler, {
@@ -20,9 +25,10 @@ app.use(webpackHotMiddleware(compiler, {
 	noInfo: true
 }));
 
-require('./route/route')(app);
+require('./config/passport')(passport);
+require('./route/route')(app, passport);
 
-mongoose.connect('mongodb://localhost:27017/userblog', function(err){
+mongoose.connect('mongodb://localhost:27017/reactblog', function(err){
 	if(err)
 		console.log(err);
 	else

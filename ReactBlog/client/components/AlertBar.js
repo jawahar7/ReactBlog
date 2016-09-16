@@ -18,7 +18,7 @@ class AlertBar extends React.Component {
 		const { closeAlertMessage } = this.props;
 		const message = this.props.flashMessage.map(m =>
 			<Alert key={m.id} bsStyle={m.result}>
-				<a href="#" className="close" onClick={() => this.onAlertClose(m.id)} aria-label="close">&times;</a>
+				<a className="close cursor-pointer" onClick={() => this.onAlertClose(m.id)} aria-label="close">&times;</a>
     			<strong>{m.message}</strong>
   			</Alert>
 		);

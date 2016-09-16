@@ -2,16 +2,21 @@ import React from 'react';
 import { connect } from 'react-redux';
 import SignUpForm from './SignUpForm';
 import { userSignUpRequest } from '../../actions/SignupAction';
-import { addAlertMessage } from '../../actions/AlertMessageAction.js';
+import { addAlertMessage, closeAllAlert } from '../../actions/AlertMessageAction.js';
 import AlertBar from '../AlertBar';
 
 class SignUp extends React.Component {
+	constructor(props) {
+		super(props);
+		this.props.closeAllAlert();
+	}
+
 	render() {		
-		const { userSignUpRequest, addAlertMessage } = this.props;		
+		const { userSignUpRequest, addAlertMessage, closeAllAlert } = this.props;		
 		return(
-			<div className="row">	
+			<div className="container">	
 				<AlertBar />		
-				<SignUpForm userSignUpRequest={userSignUpRequest} addAlertMessage={addAlertMessage} />
+				<SignUpForm userSignUpRequest={userSignUpRequest} addAlertMessage={addAlertMessage} closeAllAlert={closeAllAlert} />
 			</div>			
 		)
 	}
@@ -19,7 +24,8 @@ class SignUp extends React.Component {
 
 SignUp.propTypes = {
 	userSignUpRequest: React.PropTypes.func.isRequired,
-	addAlertMessage: React.PropTypes.func.isRequired
+	addAlertMessage: React.PropTypes.func.isRequired,
+	closeAllAlert: React.PropTypes.func.isRequired
 }
 
-export default connect(null, { userSignUpRequest, addAlertMessage })(SignUp);
+export default connect(null, { userSignUpRequest, addAlertMessage, closeAllAlert })(SignUp);
