@@ -24,18 +24,18 @@ usercontroller.save = function(req, res) {
 usercontroller.login = function(req, res){		
 	users.findOne({username: req.body.username}).select('+password').exec(function(err, user){
 		if(err)			
-			res.send("Error");		
+			res.status(400).send("Error");		
 		else{			
 			if(user){				
 				bcrypt.compare(req.body.password, user.password, function(err, result) {
 					if(result)
 						res.send('success');
 					else
-						res.send('Invalid Credential');
+						res.status(400).send('Invalid Credential');
 				});
 			}
 			else
-				res.send('Invalid Credential');
+				res.status(400).send('Invalid Credential');
 		}
 	});		
 };

@@ -1,4 +1,5 @@
 import React from 'react';
+import { browserHistory } from 'react-router';
 
 class SignInForm extends React.Component {
 	constructor(props) {
@@ -18,11 +19,14 @@ class SignInForm extends React.Component {
 	onHandleSubmit(e) {
 		e.preventDefault();
 		this.props.userSignInRequest(this.state).then(({data}) => {
-			console.log(data)
+			console.log(data);
+			this.props.closeAllAlert();
+			browserHistory.push('/Blogs');
 		}).catch(error =>{
 			console.log(error.response.data)
 			this.props.closeAllAlert();
 			this.props.addAlertMessage(error.response.data, "danger");
+			browserHistory.push('/Blogs');
 		})
 	}
 
